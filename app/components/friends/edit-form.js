@@ -1,5 +1,5 @@
 import Ember from 'ember';
-const { computed, isEmpty } = Ember;
+const { computed } = Ember;
 
 export default Ember.Component.extend({
   actions: {
@@ -20,18 +20,14 @@ export default Ember.Component.extend({
       this.cancel(this.get('model'));
     }
   },
-  isValid: computed(
-    'model.email',
-    'model.firstName',
-    'model.lastName',
-    'model.twitter',
-    {
-      get() {
-        return !isEmpty(this.get('model.email')) &&
-          !isEmpty(this.get('model.firstName')) &&
-          !isEmpty(this.get('model.lastName')) &&
-          !isEmpty(this.get('model.twitter'));
-      }
-    }
+  hasEmail: computed.notEmpty('model.email'),
+  hasFirstName: computed.notEmpty('model.firstName'),
+  hasLastName: computed.notEmpty('model.lastName'),
+  hasTwitter: computed.notEmpty('model.twitter'),
+  isValid: computed.and(
+    'hasEmail',
+    'hasFirstName',
+    'hasLastName',
+    'hasTwitter'
   )
 });
