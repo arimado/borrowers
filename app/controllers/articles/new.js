@@ -1,10 +1,10 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
-  save(model) {
+  save() {
     console.log('save action called in articles new');
   },
-  cancel(model) {
+  cancel() {
     console.log('cancel action called in articles new');
   }
 });
