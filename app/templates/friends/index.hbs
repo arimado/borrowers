@@ -3,11 +3,19 @@
 
 <h2> Total friends: {{ model.length }} </h2>
 
-<tbody>
-  {{#each model as |friend|}}
-    <tr>
-      <td> {{#link-to 'friends.show' friend}} {{ friend.firstName }} {{ friend.lastName }} {{/link-to}} </td>
-      <td> <a href="#" {{action "delete" friend}}> Delete </a> </td>
+<table>
+  <thead class="p1 h2">
+    <tr class="white bg-blue">
+      <th>Name</th>
+      <th>Delete dat boi</th>
     </tr>
-  {{/each}}
-</tbody>
+  </thead>
+  <tbody>
+    {{#each model as |friend|}}
+      <tr>
+        <td> {{link-to friend.fullName "loans" friend}} </td>
+        <td> <a href="#" {{action "delete" friend}}> Delete </a> </td>
+      </tr>
+    {{/each}}
+  </tbody>
+</table>
